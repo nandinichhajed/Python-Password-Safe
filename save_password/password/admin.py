@@ -1,8 +1,13 @@
 from django.contrib import admin
-from . models import User
+from .models import User, SavePassword
+
 # Register your models here.
-
 class UserAdmin(admin.ModelAdmin):
-    list_display = ['name', 'password']
+    list_display = ['name', 'pwd']
 
-admin.site.register(User)
+class SavePasswordAdmin(admin.ModelAdmin):
+    list_display = ['user','title', 'pwd', 'hide_pwd']
+
+
+admin.site.register(User, UserAdmin)
+admin.site.register(SavePassword, SavePasswordAdmin)
