@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import *
 from django.views import View
-# Create your views here.
+from .models import User, SavePassword
+from django.contrib.auth.hashers import check_password, make_password
 
+# Create your views here.
 class Index(View):
     def get(self, request):
         if 'user' in request.session:
@@ -46,13 +47,13 @@ class Login(View):
         except:
             return redirect('login')
 
-        return redirect('index.html')
+        return redirect('index')
 
 
 class Logout(View):
     def get(self, request):
         del request.session['user']
-        return redirect('index.html')
+        return redirect('index')
 
 
 class SavePwd(View):
@@ -69,7 +70,7 @@ class SavePwd(View):
         savePwd = SavePassword.objects.create(user=user_obj, title=title, pwd=pwd, hide_pwd=makePwd)
         savePwd.save()
 
-        return redirect('save_pwd.html')
+        return redirect('save_pwd')
 
 
 class Edit(View):
@@ -91,4 +92,4 @@ class Edit(View):
 
         pwd_obj.save()
 
-        return redirect('index.html')
+        return redirect('index')
