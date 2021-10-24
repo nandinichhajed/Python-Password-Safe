@@ -11,18 +11,18 @@
 
 
   {% load static %}
-  <title>Safe Password</title>
+  <title>Password Safe</title>
 </head>
 <body class="bg-dark" style="background-image: url({% static 'security.jpg' %}); background-repeat: no-repeat; background-size: cover;">
 
   <div class="container-fluid bg-dark">
     <header class="d-flex justify-content-center py-3">
       <ul class="nav nav-pills">
-        <li class="nav-item"><a href="{% url 'index' %}" class="nav-link" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="{% url 'index' %}" style="color:white;" class="nav-link" aria-current="page">Home</a></li>
 
         {% if request.session.user %}
-          <li class="nav-item"><a href="{% url 'save_pwd' %}" class="nav-link">Save a new Password</a></li>
-          <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
+          <li class="nav-item"><a href="{% url 'save_pwd' %}" style="color:white;" class="nav-link">Save a new Password</a></li>
+          <li class="nav-item"><a href="{% url 'logout' %}" style="color:white;" class="nav-link">Logout</a></li>
         {% else %}          
           <li class="nav-item"><a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal1">Signup</a></li>
           <li class="nav-item"><a href="{% url 'login' %}" class="nav-link">Login</a></li>
